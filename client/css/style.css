@@ -54,7 +54,7 @@ body {
     padding: var(--section-gap);
     background: var(--colour-1);
     color: var(--colour-3);
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .row {
@@ -146,6 +146,8 @@ body {
     display: flex;
     flex-direction: column;
     gap: 16px;
+    flex: auto;
+    min-width: 0;
 }
 
 .conversations .title {
@@ -167,6 +169,8 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex: auto;
+    min-width: 0;
 }
 
 .conversations i {
@@ -177,6 +181,8 @@ body {
 .convo-title {
     color: var(--colour-3);
     font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .message {
@@ -230,6 +236,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 18px;
+    min-width: 0;
 }
 
 .message .content p,
@@ -678,4 +685,115 @@ a:-webkit-any-link {
     position: absolute;
     white-space: nowrap;
     width: 1px
+}
+
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+
+.color-picker>fieldset {
+    border: 0;
+    display: flex;
+    width: fit-content;
+    background: var(--colour-1);
+    margin-inline: auto;
+    border-radius: 8px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    cursor: pointer;
+    background-color: var(--blur-bg);
+    border: 1px solid var(--blur-border);
+    color: var(--colour-3);
+    display: block;
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    padding: 6px 16px;
+}
+
+.color-picker input[type="radio"]:checked {
+    background-color: var(--radio-color);
+}
+
+.color-picker input[type="radio"]#light {
+    --radio-color: gray;
+}
+
+.color-picker input[type="radio"]#pink {
+    --radio-color: pink;
+}
+
+.color-picker input[type="radio"]#blue {
+    --radio-color: blue;
+}
+
+.color-picker input[type="radio"]#green {
+    --radio-color: green;
+}
+
+.color-picker input[type="radio"]#dark {
+    --radio-color: #232323;
+}
+
+.pink {
+    --colour-1: hsl(310 50% 90%);
+    --clr-card-bg: hsl(310 50% 100%);
+    --colour-3: hsl(310 50% 15%);
+    --conversations: hsl(310 50% 25%);
+}
+
+.blue {
+    --colour-1: hsl(209 50% 90%);
+    --clr-card-bg: hsl(209 50% 100%);
+    --colour-3: hsl(209 50% 15%);
+    --conversations: hsl(209 50% 25%);
+}
+
+.green {
+    --colour-1: hsl(109 50% 90%);
+    --clr-card-bg: hsl(109 50% 100%);
+    --colour-3: hsl(109 50% 15%);
+    --conversations: hsl(109 50% 25%);
+}
+
+.dark {
+    --colour-1: hsl(209 50% 10%);
+    --clr-card-bg: hsl(209 50% 5%);
+    --colour-3: hsl(209 50% 90%);
+    --conversations: hsl(209 50% 80%);
+}
+
+:root:has(#pink:checked) {
+    --colour-1: hsl(310 50% 90%);
+    --clr-card-bg: hsl(310 50% 100%);
+    --colour-3: hsl(310 50% 15%);
+    --conversations: hsl(310 50% 25%);
+}
+
+:root:has(#blue:checked) {
+    --colour-1: hsl(209 50% 90%);
+    --clr-card-bg: hsl(209 50% 100%);
+    --colour-3: hsl(209 50% 15%);
+    --conversations: hsl(209 50% 25%);
+}
+
+:root:has(#green:checked) {
+    --colour-1: hsl(109 50% 90%);
+    --clr-card-bg: hsl(109 50% 100%);
+    --colour-3: hsl(109 50% 15%);
+    --conversations: hsl(109 50% 25%);
+}
+
+:root:has(#dark:checked) {
+    --colour-1: hsl(209 50% 10%);
+    --clr-card-bg: hsl(209 50% 5%);
+    --colour-3: hsl(209 50% 90%);
+    --conversations: hsl(209 50% 80%);
 }
